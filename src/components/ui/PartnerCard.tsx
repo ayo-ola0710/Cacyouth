@@ -4,15 +4,17 @@ interface PartnerCardProps {
   icon: React.ComponentType;
   title: string;
   features: string[];
+  className?: string;
 }
 
 const PartnerCard = ({
   icon,
   title,
   features,
+                         className,
 }: PartnerCardProps) => {
   return (
-    <div className="border border-gray-200 dark:border-gray-700 rounded-xl p-6 flex flex-col bg-white/90">
+    <div className={`border border-gray-200 dark:border-gray-700 rounded-xl p-6 flex flex-col bg-white/90 ${className}`}>
       <span className=" text-4xl mb-4 text-black-light">
         {React.createElement(icon)}
       </span>

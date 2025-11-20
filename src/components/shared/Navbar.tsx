@@ -1,6 +1,7 @@
 import {useGSAP} from "@gsap/react";
 import gsap from "gsap";
 import { FaBars } from "react-icons/fa";
+import {Link} from "react-router-dom";
 
 
 const Navbar = () => {
@@ -28,9 +29,9 @@ const Navbar = () => {
         <nav className="fixed top-0 left-0 right-0 z-50" id='nav'>
             <div className='md:flex-center gap-30  relative  px-8 hidden '>
                 <ul className='flex gap-10 text-sm text-white'>
-                    <li className='nav-hover-btn'>Home</li>
-                    <li className='nav-hover-btn'>About</li>
-                    <li className='nav-hover-btn'>Ministry</li>
+                    <Link to='/'><li className='nav-hover-btn'>Home</li></Link>
+                    <Link to='/about'><li className='nav-hover-btn'>About</li></Link>
+                    <Link to='/ministry'><li className='nav-hover-btn'>Ministry</li></Link>
                 </ul>
                 <div className='relative '>
                     <div className="size-20 text-purple-100 ml-4">
@@ -53,9 +54,9 @@ const Navbar = () => {
                     </h2>
                 </div>
                 <ul className='flex gap-10 text-sm text-white'>
-                    <li className='nav-hover-btn'>Media</li>
-                    <li className='nav-hover-btn'>Contact</li>
-                    <li className='nav-hover-btn'>Donate Now</li>
+                    <Link to='/media'><li className='nav-hover-btn'>Media</li></Link>
+                    <Link to='/contact'><li className='nav-hover-btn'>Contact</li></Link>
+                    <Link to='/about'><li className='nav-hover-btn'>Donate Now</li></Link>
                 </ul>
             </div>
             <div className='md:hidden py-2 flex justify-between items-center px-2'>

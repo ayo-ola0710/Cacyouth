@@ -56,9 +56,11 @@ const Partners = () => {
     useGSAP(() =>{
         const packTimeline = gsap.timeline({
             scrollTrigger: {
-                trigger:'#packages',
-                start: 'top top',
-                scrub:true
+                trigger: "#partners",
+                start: "top top",
+                scrub:true,
+                pin:true,
+
             }
         })
 
@@ -67,15 +69,17 @@ const Partners = () => {
             yPercent: 100,
             duration: 1,
             ease: "power2.inOut",
+
         })
 
-        packTimeline.from('#card', {
-            opacity: 1,
+        packTimeline.from(".partner-card", {
+            opacity: 0,
             xPercent: 100,
-            yPercent: 100,
-            duration: 1,
-            ease: "power2.inOut",
-        })
+            duration: 0.8,
+            ease: "power2.out",
+            stagger: 0.3,
+
+        });
     })
   return (
       <section className="py-16 sm:py-24 bg-purple-100" id="packages">
@@ -89,13 +93,14 @@ const Partners = () => {
                       impact goals.
                   </p>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" id='card'>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" >
                      {partnerData.map((partner, index) => (
                        <PartnerCard
                          key={index}
                          icon={partner.icon}
                          title={partner.title}
                         features={partner.features}
+                         className="partner-card"
                        />
                      ))}
                   </div>

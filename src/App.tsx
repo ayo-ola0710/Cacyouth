@@ -1,20 +1,27 @@
 import {Routes, Route} from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger, SplitText } from "gsap/all";
-import Navbar from "./components/shared/Navbar.tsx";
-import Footer from "./components/shared/Footer.tsx";
 import Home from "./pages/Home.tsx";
+import PageLayout from "./pages/PageLayout.tsx";
+import About from "./pages/About.tsx";
+import Ministry from "./pages/Ministry.tsx";
+import Media from "./pages/Media.tsx";
+import Contact from "./components/Contact.tsx";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const App = () => {
   return (
     <>
-        <Navbar />
         <Routes>
-            <Route path="/" element={<Home />} />
+            <Route element={<PageLayout />} >
+             <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/ministry" element={<Ministry />} />
+                <Route path="/media" element={<Media />} />
+                <Route path="/contact" element={<Contact />} />
+            </Route>
         </Routes>
-        <Footer />
     </>
   );
 };

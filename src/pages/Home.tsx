@@ -59,24 +59,10 @@ const Home=  ()=> {
         abtTimeLine.from('#abtimg',{
             opacity: 0,
             xPercent: 100,
-            yPercent: -100,
             duration: 0.5,
             ease: "power2.inOut",
         })
 
-        const conTimeLine = gsap.timeline({
-            scrollTrigger: {
-                trigger:'#contact',
-                start: 'top top',
-            }
-        })
-
-        conTimeLine.from('#cont',{
-            opacity: 0,
-            yPercent: 100,
-            duration: 1,
-            ease: "expo.out",
-        })
     })
 
 
@@ -94,7 +80,7 @@ return (
             <div className='flex justify-center mt-12' id='btn'>< Button title='Become a Sponsor' containerClass='bg-black-light hover:bg-gray-800 cursor-pointer hover:scale-105'  /></div>
          </section>
         <section
-            className=" py-10 flex justify-center items-center gap-25 px-10  "
+            className=" py-10 flex flex-col md:flex-row justify-center items-center gap-25 px-10  "
             id="about"
         >
             <div className="text-left">
@@ -115,8 +101,10 @@ return (
             </div>
             <img src='/assets/back.png' alt='Image' className='h-100 ' id='abtimg'/>
         </section>
-        <Partners />
-        <section className="py-16 sm:py-24 bg-primary text-white" id="contact">
+        <section>
+            <Partners />
+        </section>
+        <section className="py-16 text-white" id="contact">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6" id='cont'>
                 <h2 className="text-5xl font-bold leading-tight tracking-tight ">
                     Join the Movement
