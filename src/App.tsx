@@ -1,24 +1,21 @@
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Impact from "./components/Impact";
-import Contact from "./components/Contact";
-import BrandValueSection from "./components/BrandValueSection";
-import Part from "./components/Part";
-import Footer from "./components/Footer";
+import {Routes, Route} from "react-router-dom";
+import gsap from "gsap";
+import { ScrollTrigger, SplitText } from "gsap/all";
+import Navbar from "./components/shared/Navbar.tsx";
+import Footer from "./components/shared/Footer.tsx";
+import Home from "./pages/Home.tsx";
+
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const App = () => {
   return (
-    <div>
-      <Navbar />
-      <Hero />
-      <About />
-      <Impact />
-      <Part />
-      <BrandValueSection />
-      <Contact />
-      <Footer />
-    </div>
+    <>
+        <Navbar />
+        <Routes>
+            <Route path="/" element={<Home />} />
+        </Routes>
+        <Footer />
+    </>
   );
 };
 
