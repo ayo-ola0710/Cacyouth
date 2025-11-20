@@ -1,24 +1,28 @@
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Impact from "./components/Impact";
-import Contact from "./components/Contact";
-import BrandValueSection from "./components/BrandValueSection";
-import Part from "./components/Part";
-import Footer from "./components/Footer";
+import {Routes, Route} from "react-router-dom";
+import gsap from "gsap";
+import { ScrollTrigger, SplitText } from "gsap/all";
+import Home from "./pages/Home.tsx";
+import PageLayout from "./pages/PageLayout.tsx";
+import About from "./pages/About.tsx";
+import Ministry from "./pages/Ministry.tsx";
+import Media from "./pages/Media.tsx";
+import Contact from "./components/Contact.tsx";
+
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const App = () => {
   return (
-    <div>
-      <Navbar />
-      <Hero />
-      <About />
-      <Impact />
-      <Part />
-      <BrandValueSection />
-      <Contact />
-      <Footer />
-    </div>
+    <>
+        <Routes>
+            <Route element={<PageLayout />} >
+             <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/ministry" element={<Ministry />} />
+                <Route path="/media" element={<Media />} />
+                <Route path="/contact" element={<Contact />} />
+            </Route>
+        </Routes>
+    </>
   );
 };
 

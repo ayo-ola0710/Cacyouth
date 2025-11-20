@@ -1,66 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap');
+
 @import "tailwindcss";
 
-@layer base {
-  :root {
-    --color-primary: #4a148c;
-    --color-secondary: #ffd700;
-    --color-background-light: #ffffff;
-    --color-background-dark: #10081c;
-    --color-surface-light: #f5f5f5;
-    --color-surface-dark: #1a1022;
-    --color-text-light: #333333;
-    --color-text-dark: #e0e0e0;
-    --color-text-light-muted: #666666;
-    --color-text-dark-muted: #bdbdbd;
 
-    --font-display: "Plus Jakarta Sans", sans-serif;
-
-    --radius-default: 0.5rem;
-    --radius-lg: 0.75rem;
-    --radius-xl: 1rem;
-    --radius-full: 9999px;
-  }
-
-  .dark {
-    --color-background-light: var(--color-background-dark);
-    --color-surface-light: var(--color-surface-dark);
-    --color-text-light: var(--color-text-dark);
-    --color-text-light-muted: var(--color-text-dark-muted);
-  }
-
-  body {
-    font-family: var(--font-display);
-    background-color: var(--color-background-light);
-    color: var(--color-text-light);
-  }
+@theme {
+    --color-purple-100: #4a148c;
+    --color-black-light: #0D1B2A;
+    --color-white-50: #f5f5f5;
+    --color-gray-200: #333333;
+    --font-family-serif: 'Cinzel', serif;
+    --font-family-poppins: 'Poppins', sans-serif;
 }
 
-@layer utilities {
-  .bg-primary {
-    background-color: var(--color-primary);
-  }
-  .bg-secondary {
-    background-color: var(--color-secondary);
-  }
-  .bg-tertary {
-    background-color: var(--color-surface-light);
-  }
-  .text-primary {
-    color: var(--color-primary);
-  }
-  .text-secondary {
-    color: var(--color-secondary);
-  }
-  .text-muted {
-    color: var(--color-text-light);
-  }
-  .rounded-default {
-    border-radius: var(--radius-default);
-  }
-  .rounded-xl {
-    border-radius: var(--radius-xl);
-  }
-  .rounded-full {
-    border-radius: var(--radius-full);
-  }
+body {
+    width: 100%;
+    background-color:var(--color-black-light);
+    color: white;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    font-family: "Poppins", sans-serif;
+}
+
+@utility flex-center {
+    @apply flex justify-center items-center;
+}
+
+@utility col-center {
+    @apply flex flex-col justify-center items-center;
+}
+
+@utility abs-center {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+}
+
+@utility text-gradient {
+    background: linear-gradient(to bottom, #ffffff, #898989);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+@layer components {
+    .noisy {
+        @apply absolute inset-0 size-full bg-[url("/images/noise.png")];
+    }
+    .nav-hover-btn {
+        @apply relative ms-10  capitalize text-blue-50 after:absolute after:-bottom-0.5 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-neutral-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100 dark:after:bg-white cursor-pointer;
+    }
+
 }
