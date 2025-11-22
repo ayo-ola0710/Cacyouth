@@ -81,12 +81,43 @@ const Home = () => {
       stagger: 0.06,
     });
 
-    abtTimeLine.from("#abtimg", {
-      opacity: 0,
-      xPercent: 100,
-      duration: 0.5,
-      ease: "power2.inOut",
+    const brandValueTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".brand-value-section",
+        start: "top center",
+        end: "bottom center",
+        toggleActions: "play none none reverse",
+      },
     });
+
+    brandValueTimeline
+      .from(".brand-value-section h2", {
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        ease: "power2.out",
+      })
+      .from(
+        ".brand-value-section p",
+        {
+          opacity: 0,
+          y: 30,
+          duration: 0.6,
+          ease: "power2.out",
+        },
+        "-=0.4"
+      )
+      .from(
+        ".brand-value-section .grid",
+        {
+          opacity: 0,
+          y: 50,
+          duration: 0.8,
+          ease: "power2.out",
+          stagger: 0.2,
+        },
+        "-=0.4"
+      );
 
     const contactTimeLine = gsap.timeline({
       scrollTrigger: {
@@ -176,18 +207,22 @@ const Home = () => {
     <div>
       <section className="bg-[linear-gradient(rgba(26,16,34,0.7)_0%,rgba(74,20,140,0.5)_100%),url('/assets/back.png')] bg-cover bg-center bg-no-repeat w-full h-screen space-y-7 pt-30  px-4  ">
         <h1
-          className="text-white text-6xl font-black leading-tight tracking-tight  lg:text-[80px] text-center"
+          className="text-white text-5xl font-black leading-tight tracking-tight  lg:text-[80px] text-center"
           id="head"
         >
-          CAC Youth Medaiyese <br /> WorldWide
+          <span>
+            MEDAIYESE <br className="md:hidden" /> REGIONAL <br /> YOUTH CHOIR
+            (MRYC)
+          </span>
         </h1>
         <h2
           className="text-white font-normal leading-normal  text-center"
           id="sub"
         >
-          Partner with us to empower the next generation. Your support fuels a
-          spiritual <br /> revival that impacts thousands of young lives across
-          the region.
+          Raising Worshippers. Redefining Kingdom Sounds. Transforming
+          Generations. <br className="hidden md:block" /> A home where
+          worshippers rise, Kingdom sounds are reimagined,
+          <br className="hidden md:block" /> and generations are transformed.
         </h2>
         <div className="flex justify-center mt-12" id="btn">
           <Button
@@ -204,14 +239,17 @@ const Home = () => {
         <div className="text-left">
           <div id="abt">
             <h2 className="text-5xl font-bold leading-tight tracking-tight text-primary">
-              About the <br /> Fellowship
+              Who We Are
             </h2>
             <div className="mt-6 max-w-3xl">
               <p className="text-sm leading-relaxed ">
-                The Christ Apostolic Church Youth Fellowship (CACYOF){" "}
-                <br className="hidden md:block" /> of the Medaiyese Region is
-                dedicated to nurturing a generation <br /> of young leaders
-                grounded in faith, purpose, and community.
+                The Medaiyese Regional Youth Choir (MRYC) of Christ Apostolic
+                Church <br /> Youth Fellowship, is a vibrant gathering of young
+                worshippers across <br /> Abuja, Niger, and Kaduna states,
+                committed to advancing the Gospel <br /> through excellence in
+                music, service, and spiritual growth. <br /> We exist to inspire
+                revival, nurture talent, and build a unified worship <br />
+                culture across the region.
               </p>
             </div>
             <Button
@@ -230,6 +268,54 @@ const Home = () => {
       </section>
       <section>
         <Partners />
+      </section>
+
+      {/* Brand Value Opportunities Section */}
+      <section className="py-16 bg-linear-to-r from-purple-50 to-white/50 brand-value-section">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold leading-tight tracking-tight text-primary sm:text-4xl">
+              Brand Value Opportunities
+            </h2>
+            <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+              Partnering with us positions your brand at the heart of a vibrant,
+              growing, and impactful youth movement. We welcome sponsorships
+              from all industries looking to connect with a positive,
+              faith-driven audience and support meaningful community
+              transformation.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-1 max-w-2xl left-1/4 relative gap-8 mb-12">
+            <div className="bg-black-light p-6 rounded-lg shadow-md">
+              <h3 className="text-xl font-semibold text-primary mb-4">
+                Through your partnership, your brand becomes part of:
+              </h3>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <span className="text-primary mr-2">•</span>
+                  <span>A large, engaged youth community</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary mr-2">•</span>
+                  <span>A high-impact worship and creative ministry</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary mr-2">•</span>
+                  <span>
+                    A platform that promotes excellence, values, and purpose
+                  </span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary mr-2">•</span>
+                  <span>
+                    Life-changing outreach initiatives across the region
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Videos Section */}

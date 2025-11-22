@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { FaBars } from "react-icons/fa";
@@ -8,6 +9,8 @@ interface NavbarProps {
 }
 
 const Navbar = ({ onDonateClick }: NavbarProps) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   useGSAP(() => {
     const navTween = gsap.timeline({
       scrollTrigger: {
@@ -45,7 +48,7 @@ const Navbar = ({ onDonateClick }: NavbarProps) => {
             <li className="nav-hover-btn">About</li>
           </Link>
           <Link to="/ministry">
-            <li className="nav-hover-btn">Ministry</li>
+            <li className="nav-hover-btn">Mandate</li>
           </Link>
         </ul>
         <div className="relative ">
@@ -102,10 +105,49 @@ const Navbar = ({ onDonateClick }: NavbarProps) => {
             <p className="text-lg -mt-2">Medaiyese</p>
           </h2>
         </div>
-        <div>
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="bg-transparent border-none"
+        >
           <FaBars size={40} />
-        </div>
+        </button>
       </div>
+      {isOpen && (
+        <div className="absolute top-full left-0 right-0 bg-black/80 text-white p-4 rounded-md z-50">
+          <ul className="flex flex-col gap-4">
+            <Link to="/" onClick={() => setIsOpen(false)}>
+              <li className="text-left text-xl hover:text-purple-100">Home</li>
+            </Link>
+            <Link to="/about" onClick={() => setIsOpen(false)}>
+              <li className="text-left text-xl hover:text-purple-100">About</li>
+            </Link>
+            <Link to="/ministry" onClick={() => setIsOpen(false)}>
+              <li className=" text-left text-xl hover:text-purple-100">
+                Mandate
+              </li>
+            </Link>
+            <Link to="/media" onClick={() => setIsOpen(false)}>
+              <li className=" text-left text-xl hover:text-purple-100">
+                Media
+              </li>
+            </Link>
+            <Link to="/contact" onClick={() => setIsOpen(false)}>
+              <li className="text-left text-xl hover:text-purple-100">
+                Contact
+              </li>
+            </Link>
+            <button
+              onClick={() => {
+                setIsOpen(false);
+                displayModal();
+              }}
+              className="hover:scale-105 text-xl font-bold border py-2 rounded-full hover:bg-purple-100"
+            >
+              Donate Now
+            </button>
+          </ul>
+        </div>
+      )}
     </nav>
   );
 };

@@ -1,7 +1,11 @@
+import { useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import Skeleton from "../components/ui/Skeleton.tsx";
 
 const Media = () => {
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+
   useGSAP(() => {
     const sections = gsap.utils.toArray(".media-section");
 
@@ -38,30 +42,26 @@ const Media = () => {
 
   return (
     <div className="min-h-screen">
-      <div className="bg-linear-to-r from-purple-100 to-black-light h-100">
-        <p
-          className="text-center text-[150px] text-gradient pt-25"
-          id="contact-title"
-        >
-          Gallery
-        </p>
-      </div>
       {/* Conference Section */}
-      <section className="media-section py-16 ">
+      <section className="media-section py-16  mt-15">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-center text-primary mb-12">
             Conference
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {Array.from({ length: 8 }, (_, i) => (
               <div
                 key={`conf-${i}`}
                 className="media-image overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow"
               >
+                {!imagesLoaded && <Skeleton width="100%" height="192px" />}
                 <img
                   src="/assets/back.png"
                   alt={`Conference ${i + 1}`}
-                  className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+                  className={`w-full h-48 object-cover hover:scale-105 transition-transform duration-300 ${
+                    imagesLoaded ? "block" : "hidden"
+                  }`}
+                  onLoad={i === 0 ? () => setImagesLoaded(true) : undefined}
                 />
               </div>
             ))}
@@ -75,16 +75,19 @@ const Media = () => {
           <h2 className="text-4xl font-bold text-center text-primary mb-12">
             Revivals
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {Array.from({ length: 6 }, (_, i) => (
               <div
                 key={`rev-${i}`}
                 className="media-image overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow"
               >
+                {!imagesLoaded && <Skeleton width="100%" height="192px" />}
                 <img
                   src="/assets/back.png"
                   alt={`Revival ${i + 1}`}
-                  className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+                  className={`w-full h-48 object-cover hover:scale-105 transition-transform duration-300 ${
+                    imagesLoaded ? "block" : "hidden"
+                  }`}
                 />
               </div>
             ))}
@@ -98,16 +101,19 @@ const Media = () => {
           <h2 className="text-4xl font-bold text-center text-primary mb-12">
             Programs
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {Array.from({ length: 8 }, (_, i) => (
               <div
                 key={`prog-${i}`}
                 className="media-image overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow"
               >
+                {!imagesLoaded && <Skeleton width="100%" height="192px" />}
                 <img
                   src="/assets/back.png"
                   alt={`Program ${i + 1}`}
-                  className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+                  className={`w-full h-48 object-cover hover:scale-105 transition-transform duration-300 ${
+                    imagesLoaded ? "block" : "hidden"
+                  }`}
                 />
               </div>
             ))}

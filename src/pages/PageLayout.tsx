@@ -1,16 +1,40 @@
+import { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../components/shared/Navbar";
 import Footer from "../components/shared/Footer";
 import { AnimatePresence, motion } from "framer-motion";
 import Donate from "../components/ui/Donate";
+
 import { useDonate } from "../components/shared/DonateContext";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
 
 const PageLayout = () => {
   const location = useLocation();
   const { isModalOpen, openModal, closeModal } = useDonate();
 
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.to("#scroll-progress", {
+      width: "100%",
+      ease: "none",
+      scrollTrigger: {
+        trigger: "body",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: true,
+      },
+    });
+  }, []);
+
   return (
     <>
+      <div
+        id="scroll-progress"
+        className="fixed top-0 left-0 h-1 bg-purple-100 z-50"
+        style={{ width: "0%" }}
+      />
       <AnimatePresence mode="wait">
         <motion.div
           key={location.pathname}

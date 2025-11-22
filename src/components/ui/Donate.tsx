@@ -29,7 +29,7 @@ const DonateModal = ({ isOpen, onClose }: DonateModalProps) => {
 
   return createPortal(
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 bg-opacity-50">
-      <div className="bg-white rounded-lg  shadow-xl max-w-md w-full h-125 mx-4 p-6 relative">
+      <div className="bg-white rounded-lg  shadow-xl max-w-md w-full h-100 mx-4 p-6 relative">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
@@ -49,11 +49,11 @@ const DonateModal = ({ isOpen, onClose }: DonateModalProps) => {
           </svg>
         </button>
 
-        <h2 className="text-2xl font-bold text-center text-black-light mb-2 ">
+        <h2 className="text-2xl font-bold text-center text-black-light mb-2 mt-10 ">
           Support Our Mission
         </h2>
         <p className="text-gray-600 text-center mb-6">
-          Choose your preferred payment method below.
+          Your payment method below.
         </p>
 
         <div className="space-y-4">
@@ -61,29 +61,15 @@ const DonateModal = ({ isOpen, onClose }: DonateModalProps) => {
             <h3 className="font-semibold text-gray-800 mb-2">Bank Transfer</h3>
             <div className="space-y-2 text-sm">
               <p>
-                <span className="font-medium">Account Name:</span> Christ
-                Apostolic Church Youth Fellowship
+                <span className="font-medium">Account Name:</span> CAC Medaiyese
+                regional choir
               </p>
               <p>
-                <span className="font-medium">Account Number:</span> 1234567890
+                <span className="font-medium">Account Number:</span> 2343426574
               </p>
               <p>
-                <span className="font-medium">Bank:</span> First Bank Nigeria
-              </p>
-            </div>
-          </div>
-
-          <div className="border border-gray-200 text-black-light rounded-lg p-4">
-            <h3 className="font-semibold text-gray-800 mb-2">
-              International Transfer
-            </h3>
-            <div className="space-y-2 text-sm">
-              <p>
-                <span className="font-medium">IBAN:</span> NG12 3456 7890 1234
-                5678
-              </p>
-              <p>
-                <span className="font-medium">SWIFT Code:</span> FBNINGLA
+                <span className="font-medium">Bank:</span> United Bank of Africa
+                (UBA)
               </p>
             </div>
           </div>
@@ -93,10 +79,10 @@ const DonateModal = ({ isOpen, onClose }: DonateModalProps) => {
           <p className="text-sm text-gray-500">
             For any questions about donations, please contact us at{" "}
             <a
-              href="mailto:donate@cacyof.org"
+              href="mailto:medaiyeseregionalyouthchoir@gmail.com"
               className="text-primary hover:underline"
             >
-              donate@cacyof.org
+              medaiyeseregionalyouthchoir@gmail.com
             </a>
           </p>
         </div>
