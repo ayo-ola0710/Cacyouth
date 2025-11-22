@@ -11,6 +11,11 @@ const PageLayout = () => {
 
   return (
     <>
+      <div
+        id="scroll-progress"
+        className="fixed top-0 left-0 h-1 bg-purple-100 z-50"
+        style={{ width: "0%" }}
+      />
       <AnimatePresence mode="wait">
         <motion.div
           key={location.pathname}

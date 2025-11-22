@@ -71,7 +71,7 @@ const About = () => {
   });
   return (
     <section>
-      <div className="bg-gradient-to-r from-purple-100 to-black-light h-100">
+      <div className="bg-linear-to-r from-purple-100 to-black-light h-100">
         <p
           className="text-center text-[150px] text-gradient pt-25"
           id="about-title"
@@ -97,6 +97,26 @@ const About = () => {
             engagement.
           </p>
         </div>
+        <div className="mt-6 max-w-3xl mx-auto">
+          <h3 className="text-2xl font-bold text-primary mt-8">Our Mission</h3>
+          <p className="text-lg leading-relaxed text-text-light-muted dark:text-text-dark-muted mt-4">
+            To raise spiritually-grounded, skillful worship ministers.
+            <br />
+            To create platforms for young people to encounter God through music.
+            <br />
+            To strengthen unity, excellence, and leadership within the body of
+            Christ.
+          </p>
+          <h3 className="text-2xl font-bold text-primary mt-8">Our Mandate</h3>
+          <p className="text-lg leading-relaxed text-text-light-muted dark:text-text-dark-muted mt-4">
+            Every year, we host two major life-transforming programs:
+            <br />
+            The Emergence Concert – Our flagship worship experience.
+            <br />
+            The Youth Conference – A gathering focused on teaching, ministry,
+            and connection.
+          </p>
+        </div>
       </div>
       <section className="py-16 sm:py-24 bg-purple-100" id="impact">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -105,8 +125,8 @@ const About = () => {
               Our Impact
             </h2>
             <p className="mt-4 text-lg text-text-light-muted dark:text-text-dark-muted max-w-2xl mx-auto">
-              Reaching hearts and transforming lives through faith and
-              community.
+              Harmonizing faith and community to create life-changing encounters
+              with God through the gift of music.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-center text-black-light -mt-5">
@@ -119,8 +139,8 @@ const About = () => {
               <p className="mt-2 text-lg font-medium">Online Views</p>
             </div>
             <div className="p-5 bg-white/70 rounded-xl impact-card hover:scale-105 transition-transform duration-300">
-              <h3 className="text-3xl font-extrabold text-primary">50+</h3>
-              <p className="mt-2 text-lg font-medium">Community Projects</p>
+              <h3 className="text-3xl font-extrabold text-primary">10,000 +</h3>
+              <p className="mt-2 text-lg font-medium">Life touched</p>
             </div>
           </div>
         </div>

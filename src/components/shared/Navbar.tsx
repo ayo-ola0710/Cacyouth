@@ -10,8 +10,8 @@ interface NavbarProps {
 
 const Navbar = ({ onDonateClick }: NavbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const menuRef = useRef < HTMLDivElement > (null);
-  const tl = useRef < gsap.core.Timeline | null > (null);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const tl = useRef<gsap.core.Timeline | null>(null);
 
   useGSAP(() => {
     // Scroll Animation for Navbar Background
@@ -101,7 +101,7 @@ const Navbar = ({ onDonateClick }: NavbarProps) => {
             <li className="nav-hover-btn !ml-0">About</li>
           </Link>
           <Link to="/ministry">
-            <li className="nav-hover-btn !ml-0">Ministry</li>
+            <li className="nav-hover-btn !ml-0">Mandate</li>
           </Link>
           <Link to="/media">
             <li className="nav-hover-btn !ml-0">Media</li>
@@ -221,7 +221,7 @@ const Navbar = ({ onDonateClick }: NavbarProps) => {
           </Link>
           <Link to="/ministry" onClick={closeMenu}>
             <li className="mobile-nav-link hover:text-purple-400 transition-colors">
-              Ministry
+              Mandate
             </li>
           </Link>
           <Link to="/media" onClick={closeMenu}>
