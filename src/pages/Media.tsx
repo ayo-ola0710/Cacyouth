@@ -55,14 +55,6 @@ const Media = () => {
 
   return (
     <div className="min-h-screen">
-      <div className="bg-linear-to-r from-purple-100 to-black-light h-100">
-        <p
-          className="text-center text-[80px] md:text-[150px] text-gradient pt-35 md:pt-25"
-          id="contact-title"
-        >
-          Gallery
-        </p>
-      </div>
       {/* Conference Section */}
       <section className="media-section py-16 ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

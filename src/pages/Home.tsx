@@ -4,14 +4,12 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import Partners from "../components/shared/Partners.tsx";
 import BrandValueSection from "../components/shared/BrandValueSection.tsx";
-import { useNavigate } from "react-router-dom";
-const Home = () => {
+import { useDonate } from "../components/shared/DonateContext.tsx";
+import VanillaTilt from "vanilla-tilt";
 
-  const images = [
-    "/assets/1.jpg",
-    "/assets/3.jpg",
-    "/assets/5.jpg",
-  ];
+const Home = () => {
+  const { openModal } = useDonate();
+  const images = ["/assets/1.jpg", "/assets/3.jpg", "/assets/5.jpg"];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -88,12 +86,17 @@ const Home = () => {
       }
     );
   });
-
-  const navigate = useNavigate();
-
-  const openModal = () => {
-    navigate("/sponsorship");
-  };
+  useEffect(() => {
+    VanillaTilt.init(
+      Array.from(document.querySelectorAll(".tilt-card")) as HTMLElement[],
+      {
+        max: 15,
+        speed: 400,
+        glare: true,
+        "max-glare": 0.5,
+      }
+    );
+  }, []);
 
   const testimonies = [
     {
@@ -135,24 +138,23 @@ const Home = () => {
         ))}
 
         <div className="relative z-10 h-full flex flex-col justify-center items-center px-4 text-center space-y-7 pt-20">
-          <div className="overflow-hidden flex flex-col items-center">
-            <h2 className="text-xl md:text-3xl font-bold tracking-[0.2em] mb-2 text-gray-300 uppercase text-center">
-              CAC Youth Medaiyese Region
-            </h2>
-            <h1
-              className="text-5xl md:text-7xl lg:text-[100px] font-black leading-tight tracking-tight text-gradient"
-              id="hero-text"
-            >
-              RAISING GIANTS
-            </h1>
-          </div>
-          <p
-            className="text-lg md:text-2xl text-gray-300 max-w-2xl mx-auto"
-            id="hero-sub"
+          <h1
+            className="text-white text-5xl font-black leading-tight tracking-tight  lg:text-[80px] text-center"
+            id="head"
           >
-            Empowering the next generation of kingdom leaders through worship,
-            word, and fellowship.
-          </p>
+            <span>
+              MEDAIYESE <br className="md:hidden" /> REGIONAL <br /> YOUTH CHOIR
+              (MRYC)
+            </span>
+          </h1>
+          <h2
+            className="text-white font-normal leading-normal  text-center"
+            id="sub"
+          >
+            Raising Worshippers. Redefining Kingdom Sounds. Transforming
+            Generations. <br /> A home where worshippers rise, Kingdom sounds
+            are reimagined, and generations are transformed.
+          </h2>
           <Button
             title="Become a Sponsor"
             containerClass="bg-black-light hover:bg-gray-800 cursor-pointer hover:scale-105 transition-transform duration-300"
@@ -161,31 +163,51 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="py-20 flex flex-col lg:flex-row justify-center items-center gap-12 lg:gap-20 px-6 lg:px-10 overflow-hidden" id="about">
-        <div className="w-full max-w-2xl text-center lg:text-left space-y-6" id="abt">
-          <h2 className="text-4xl md:text-5xl font-bold text-white">
-            About The Fellowship
-          </h2>
-          <p className="text-lg text-gray-300 leading-relaxed">
-            The Christ Apostolic Church Youth Fellowship (CACYOF) of the
-            Medaiyese Region is dedicated to nurturing a generation of young
-            leaders grounded in faith, purpose, and community.
-          </p>
-          <Button
-            title="Learn More"
-            containerClass="bg-primary hover:bg-purple-700 text-white mt-4 inline-block"
-            handleClick={() => navigate("/about")}
-          />
+      <section
+        className="py-20 flex flex-col lg:flex-row justify-center items-center gap-12 lg:gap-20 px-6 lg:px-10 overflow-hidden"
+        id="about"
+      >
+        <div
+          className="w-full max-w-2xl text-center lg:text-left space-y-6"
+          id="abt"
+        >
+          <div className="text-left">
+            <div id="abt">
+              <h2 className="text-5xl font-bold leading-tight tracking-tight text-primary">
+                Who We Are
+              </h2>
+              <div className="mt-6 max-w-3xl">
+                <p className="text-sm leading-relaxed ">
+                  The Medaiyese Regional Youth Choir (MRYC) of Christ Apostolic
+                  Church <br /> Youth Fellowship, is a vibrant gathering of
+                  young worshippers across <br /> Abuja, Niger, and Kaduna
+                  states, committed to advancing the Gospel <br /> through
+                  excellence in music, service, and spiritual growth. <br /> We
+                  exist to inspire revival, nurture talent, and build a unified
+                  worship <br />
+                  culture across the region.
+                </p>
+              </div>
+              <Button
+                title="About Us"
+                containerClass="bg-purple-100 hover:bg-gray-800 cursor-pointer hover:scale-105 mt-5"
+                // handleClick={handleAbout}
+              />
+            </div>
+          </div>
         </div>
         <img
           src="/assets/2.jpg"
           alt="Fellowship Gathering"
           id="abtimg"
-          className="w-full max-w-md lg:max-w-lg rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-300 cursor-pointer object-cover aspect-[4/3]"
+          className="w-full max-w-md lg:max-w-lg rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-300 cursor-pointer object-cover aspect-4/3"
         />
       </section>
 
-      <section className="py-24 bg-black-light relative overflow-hidden" id="video-section">
+      <section
+        className="py-24 bg-black-light relative overflow-hidden"
+        id="video-section"
+      >
         {/* Background Elements */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
           <div className="absolute top-10 left-10 w-64 h-64 bg-purple-600/20 rounded-full blur-[100px]"></div>
@@ -195,10 +217,11 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Voices of Impact
+              Impact Stories
             </h2>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Hear from the lives that have been touched, transformed, and empowered through our fellowship.
+              Hear from the lives that have been touched, transformed, and
+              empowered through our fellowship.
             </p>
           </div>
 
@@ -206,19 +229,29 @@ const Home = () => {
             {testimonies.map((testimony, index) => (
               <div
                 key={index}
-                className="video-card bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all duration-300 hover:-translate-y-2 group"
+                className="video-card bg-white/5 tilt-card backdrop-blur-md border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all duration-300 hover:-translate-y-2 group"
               >
-                <div className="flex items-center gap-4 mb-6">
+                <div className="flex items-center  gap-4 mb-6">
                   <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-purple-500/50">
-                    <img src={testimony.image} alt={testimony.name} className="w-full h-full object-cover" />
+                    <img
+                      src={testimony.image}
+                      alt={testimony.name}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div>
-                    <h3 className="text-white font-bold text-lg">{testimony.name}</h3>
+                    <h3 className="text-white font-bold text-lg">
+                      {testimony.name}
+                    </h3>
                     <p className="text-purple-400 text-sm">{testimony.role}</p>
                   </div>
                 </div>
                 <div className="mb-4">
-                  <svg className="w-8 h-8 text-white/20 group-hover:text-purple-500/50 transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                  <svg
+                    className="w-8 h-8 text-white/20 group-hover:text-purple-500/50 transition-colors"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
                     <path d="M14.017 21L14.017 18C14.017 16.896 14.913 16 16.017 16H19.017C19.569 16 20.017 15.552 20.017 15V9C20.017 8.448 19.569 8 19.017 8H15.017C14.465 8 14.017 8.448 14.017 9V11C14.017 11.552 13.569 12 13.017 12H12.017V5H22.017V15C22.017 18.314 19.331 21 16.017 21H14.017ZM5.01697 21L5.01697 18C5.01697 16.896 5.91297 16 7.01697 16H10.017C10.569 16 11.017 15.552 11.017 15V9C11.017 8.448 10.569 8 10.017 8H6.01697C5.46497 8 5.01697 8.448 5.01697 9V11C5.01697 11.552 4.56897 12 4.01697 12H3.01697V5H13.017V15C13.017 18.314 10.331 21 7.01697 21H5.01697Z" />
                   </svg>
                 </div>
@@ -233,6 +266,52 @@ const Home = () => {
 
       <Partners />
       <BrandValueSection />
+      <section className="py-16 bg-linear-to-r from-purple-50 to-white/50 brand-value-section">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold leading-tight tracking-tight text-primary sm:text-4xl">
+              Brand Value Opportunities
+            </h2>
+            <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+              Partnering with us positions your brand at the heart of a vibrant,
+              growing, and impactful youth movement. We welcome sponsorships
+              from all industries looking to connect with a positive,
+              faith-driven audience and support meaningful community
+              transformation.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-1 max-w-2xl md:left-1/4 relative gap-8 mb-12">
+            <div className="bg-black-light p-6 rounded-lg shadow-md">
+              <h3 className="text-xl font-semibold text-primary mb-4">
+                Through your partnership, your brand becomes part of:
+              </h3>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <span className="text-primary mr-2">•</span>
+                  <span>A large, engaged youth community</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary mr-2">•</span>
+                  <span>A high-impact worship and creative ministry</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary mr-2">•</span>
+                  <span>
+                    A platform that promotes excellence, values, and purpose
+                  </span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary mr-2">•</span>
+                  <span>
+                    Life-changing outreach initiatives across the region
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
